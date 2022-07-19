@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('brellahs', function (Blueprint $table) {
             $table->id();
             $table->string('company');
-            $table->string('regNumber');
+            $table->string('regNumber')->unique();
             $table->longText('about');
             $table->string('email');
             $table->string('phone');

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 // Route Janja zote ziko hapa
 
@@ -18,3 +19,7 @@ Route::get('/forgot', function () {
 Route::get('/register', function () {
     return view('outside.register');
 });
+
+// register company here
+Route::post('/new_company',[LoginController::class,'newCompany']);
+

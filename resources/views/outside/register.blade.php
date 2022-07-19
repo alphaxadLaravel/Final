@@ -27,33 +27,33 @@
                                     </div>
                                 @endif
 
-                                <form action="/register_company" wire:submit.prevent="" method="POST">
+                                <form action="/new_company" method="POST">
                                     @csrf
 
-                                    <div class="form-group mb-4 mt-3">
+                                    <div class="form-group mb-2 mt-2">
                                         <label for="" class="text-muted mb-1">Brellah RegNumber </label>
-                                        <input type="email" class="form-control" name="RegNumber" id=""
+                                        <input type="text" class="form-control" name="regNumber" id=""
                                             aria-describedby="helpId" placeholder="Company Reg Number from Brellah">
                                         <small class="text-danger">
-                                            @error('RegNumber')
+                                            @error('regNumber')
                                                 {{ $message }}
                                             @enderror
                                         </small>
                                     </div>
-                                    <div class="form-group mb-4 mt-3">
+                                    <div class="form-group mb-2 mt-2">
                                         <label for="" class="text-muted mb-1">HR Phone </label>
                                         <input type="text" class="form-control" name="phone" id=""
-                                            aria-describedby="helpId" placeholder="Enter Brellah reg-Number">
+                                            aria-describedby="helpId" placeholder="Enter HR Phone number">
                                         <small class="text-danger">
                                             @error('phone')
                                                 {{ $message }}
                                             @enderror
                                         </small>
                                     </div>
-                                    <div class="form-group mb-4 mt-3">
+                                    <div class="form-group mb-2 mt-2">
                                         <label for="" class="text-muted mb-1">HR email </label>
                                         <input type="email" class="form-control" name="email" id=""
-                                            aria-describedby="helpId" placeholder="Enter company Email">
+                                            aria-describedby="helpId" placeholder="Enter HR Email">
                                         <small class="text-danger">
                                             @error('email')
                                                 {{ $message }}
@@ -61,9 +61,9 @@
                                         </small>
                                     </div>
 
-                                    <div class="form-group mb-4 mt-3">
+                                    <div class="form-group mb-2 mt-2">
                                         <label for="" class="text-muted mb-1">HR Username </label>
-                                        <input type="email" class="form-control" name="username" id=""
+                                        <input type="text" class="form-control" name="username" id=""
                                             aria-describedby="helpId" placeholder="Enter Your Username">
                                         <small class="text-danger">
                                             @error('username')
@@ -73,7 +73,7 @@
                                     </div>
 
                                     <div class="row justify-content-center mb-3 mt-4 px-3">
-                                        <button class="btn btn-outline-primary" wire:click="submit">Submit </button>
+                                        <button class="btn btn-outline-primary" type="submit">Register Here </button>
                                     </div>
                                     <div class="text-center text-muted">
                                         <small>Have an Account ? <a href="/" class="text-ifm">Login
