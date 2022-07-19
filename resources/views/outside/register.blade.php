@@ -19,17 +19,14 @@
                                     <h5 class="text-ifm text-center fw-bold"> Company Register</h5>
                                 </div>
 
-                                @if (Session::has('none'))
-                                    <div class="alert alert-danger alert-dismissible" role="alert">
-                                        Wrong Reg number or Password!
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @endif
-
                                 <form action="/new_company" method="POST">
                                     @csrf
-
+                                    @if (Session::has('exist'))
+                                        <div class="alert alert-danger alert-dismissible" role="alert">
+                                        Account Already Exist!, <br><span><a href="/forgot" class="text-ifm">Forgot your Password ?</a></span>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    @endif
                                     <div class="form-group mb-2 mt-2">
                                         <label for="" class="text-muted mb-1">Brellah RegNumber </label>
                                         <input type="text" class="form-control" name="regNumber" id=""

@@ -23,3 +23,7 @@ Route::get('/register', function () {
 // register company here
 Route::post('/new_company',[LoginController::class,'newCompany']);
 
+// Login users route here
+Route::post('/walete',[LoginController::class,'walete']);
+
+

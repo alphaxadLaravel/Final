@@ -13,6 +13,5 @@ class Company extends Model
     protected $fillable = [
         'brellah_id',
         'hr_id',
-        'status'
     ];
 }

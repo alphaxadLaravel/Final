@@ -27,8 +27,15 @@
                                             aria-label="Close"></button>
                                     </div>
                                 @endif
-                                <form action="/login" method="POST">
+                                <form action="/walete" method="POST">
                                     @csrf
+                                    @if (Session::has('registered'))
+                                        <div class="alert alert-success alert-dismissible" role="alert">
+                                            Company Registered Successfully!,<br>Login Credentials Sent To Your Email!
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
                                     <div class="form-group mb-4 mt-3">
                                         <label for="" class="text-muted mb-1">Username </label>
                                         <input type="text" class="form-control" name="username" id=""
