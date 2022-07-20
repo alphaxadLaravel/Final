@@ -81,6 +81,16 @@ Route::get('/responses', function () {
     return view('common.responses');
 });
 
+// Host Supervisors
+Route::get('/host_supervisors', function () {
+    return view('hr.host_supervisors');
+});
+
+// Departments
+Route::get('/departments', function () {
+    return view('hr.departments');
+});
+
 // register company here
 Route::post('/new_company',[LoginController::class,'newCompany']);
 

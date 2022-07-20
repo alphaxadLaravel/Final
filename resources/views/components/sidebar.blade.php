@@ -165,14 +165,14 @@
                     <div data-i18n="Basic">Responses</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link">
+            <li class="menu-item {{ request()->is('host_supervisors') ? 'active' : '' }}">
+                <a href="/host_supervisors" class="menu-link">
                     <i class="menu-icon mdi mdi-account-network"></i>
                     <div data-i18n="Basic">Host Supervisors</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link">
+            <li class="menu-item {{ request()->is('departments') ? 'active' : '' }}">
+                <a href="/departments" class="menu-link">
                     <i class="menu-icon mdi mdi-lan"></i>
                     <div data-i18n="Basic">Departments</div>
                 </a>

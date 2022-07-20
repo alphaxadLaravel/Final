@@ -9,6 +9,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>RequestID</th>
                             <th>Reg Number</th>
                             <th>Student Name</th>
                             <th>Company Name</th>
