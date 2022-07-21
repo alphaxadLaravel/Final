@@ -18,4 +18,16 @@ class IfmSupervision extends Model
         'status',
     ];
 
+    // Supervison belonngs to Supervisor
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
+
+     // Supervison belongs to student
+     public function student()
+     {
+         return $this->belongsTo(Student::class);
+     }
+
 }

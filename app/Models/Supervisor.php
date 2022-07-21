@@ -19,4 +19,28 @@ class Supervisor extends Model
         'phone',
         'status',
     ];
+
+    // supervisor hasmany students
+    public function student()
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    // He has many Supervisions at IFM only
+    public function ifm_supervision()
+    {
+        return $this->hasMany(IfmSupervision::class);
+    }
+
+    // He belongs to cetan faculty
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
+    // He is the system users
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

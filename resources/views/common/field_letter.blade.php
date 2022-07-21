@@ -1,26 +1,31 @@
 @extends('layouts.app')
 @section('title', 'Application Letter - IFM Field Management System')
 @section('system')
-    {{-- @if (session()->get('user')['status'] == 'student') --}}
+    @if (session()->get('role') == 'student')
         <h5 class=" py-3 mb-2"><span class="text-muted fw-light">Student /</span> Field Letters</h5>
 
         <div class="row">
             <div class="">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title"> <i class="menu-icon mdi mdi-cloud-download"></i> Download the Field Here!</h6>
-                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="menu-icon mdi mdi-cloud-download"></i> Click to Download Letter</a>
-                        {{-- <div class="alert alert-primary" role="alert">
-                            <small>Field Letter haven't been Uploaded Yet by Your HOD!...Please Wait</small>
-                        </div> --}}
+                        @if ($application)
+                            <h6 class="card-title"> <i class="menu-icon mdi mdi-cloud-download"></i> Download the Letter Here!
+                            </h6>
+                            <a href="/download" class="btn btn-sm btn-outline-primary"><i
+                                    class="menu-icon mdi mdi-cloud-download"></i> Click to Download Letter</a>
+                        @else
+                            <div class="alert alert-danger" role="alert">
+                                <small>Field Letter haven't been Uploaded Yet by Your HOD!...Please Wait</small>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    {{-- @endif --}}
+    @endif
 
     {{-- HOD Upload and Preview Field Letter --}}
-    {{-- @if (session()->get('user')['status'] == 'hod') --}}
+    @if (session()->get('role') == 'hod')
         <h5 class=" py-3 mb-2"><span class="text-muted fw-light">HOD /</span> Field Letter</h5>
         @if (Session::has('uploaded'))
             <div class="alert alert-success alert-dismissible" role="alert">
@@ -39,7 +44,7 @@
             <div class="col-md-6">
                 <div class="card mb-2">
                     <div class="card-body ">
-                        <h5 class="text-muted"><i class="mdi mdi-cloud-upload"></i> Upload Letter</h5>
+                        <h5 class=""><i class="mdi mdi-cloud-upload"></i> Upload Letter</h5>
                         <form action="/upload" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
@@ -68,26 +73,24 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        {{-- @if ($application)
-                            <p> You can Update the Letter by uploading Again!</p>
+                        @if ($application)
+                            <p> <i class="mdi mdi-link-variant"></i> You can <span class="text-ifm">Update</span> the Letter
+                                by uploading Again!</p>
 
                             @if ($application)
-                                <a href="/download_application_letter" class="btn btn-outline-primary mt-3"> Application
-                                    Letter <i class="mdi mdi-eye"></i></a>
+                                <a href="/download" class="btn btn-outline-primary mt-3"> Application
+                                    Letter <i class="mdi mdi-download"></i></a>
                             @endif
                         @else
                             <div class="d-flex justify-content-center flex-column align-items-center">
                                 <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
-                                <p class="text-muted">No Any Letters to Download!</p>
+                                <p class="text-muted">No Any Letter to Download!</p>
                             </div>
-                        @endif --}}
-                        <div class="d-flex justify-content-center flex-column align-items-center">
-                            <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
-                            <p class="text-muted">No Any Letters to Download!</p>
-                        </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
         </div>
-    {{-- @endif --}}
+    @endif
 @endsection

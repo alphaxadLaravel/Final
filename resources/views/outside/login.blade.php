@@ -31,7 +31,7 @@
                                     @csrf
                                     @if (Session::has('registered'))
                                         <div class="alert alert-success alert-dismissible" role="alert">
-                                            Company Registered Successfully!,<br>Login Credentials Sent To Your Email!
+                                            Registered! Check your Email!
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                 aria-label="Close"></button>
                                         </div>

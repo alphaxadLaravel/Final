@@ -22,11 +22,8 @@
             </a>
         </li>
 
-
-
         {{-- Nav links for the supervisor here --}}
-        {{-- @if (session()->get('user')['status'] == 'hod') --}}
-        @if ("hod")
+        @if (session()->get('role') == 'hod')
             <li class="menu-item {{ request()->is('field_letter') ? 'active' : '' }}">
                 <a href="/field_letter" class="menu-link ">
                     <i class="menu-icon mdi mdi-link-variant"></i>
@@ -66,12 +63,10 @@
                     <div data-i18n="Basic">Assessment</div>
                 </a>
             </li>
-
-           
         @endif
 
         {{-- Nav links for the Superviosor Here --}}
-        {{-- @if (session()->get('user')['status'] == 'supervisor') --}}
+        @if (session()->get('role') == 'supervisor')
             <li class="menu-item {{ request()->is('all_students') ? 'active' : '' }}">
                 <a href="/all_students" class="menu-link">
                     <i class="menu-icon mdi mdi-account-multiple-outline"></i>
@@ -99,12 +94,10 @@
                     <div data-i18n="Basic">Assessment</div>
                 </a>
             </li>
-
-           
-        {{-- @endif --}}
+        @endif
 
         {{-- Nav links for the Student Here --}}
-        {{-- @if (session()->get('user')['status'] == 'student') --}}
+        @if (session()->get('role') == 'student')
             <li class="menu-item {{ request()->is('field_letter') ? 'active' : '' }}">
                 <a href="/field_letter" class="menu-link ">
                     <i class="menu-icon mdi mdi-link-variant"></i>
@@ -117,7 +110,7 @@
                     <div data-i18n="Basic">My Allocation</div>
                 </a>
             </li>
-            
+
             <li class="menu-item {{ request()->is('my_allocation') ? 'active' : '' }}">
                 <a href="/company_list" class="menu-link">
                     <i class="menu-icon mdi mdi-city"></i>
@@ -130,35 +123,24 @@
                     <div data-i18n="Basic">Logbook</div>
                 </a>
             </li>
-            {{-- <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="menu-icon mdi mdi-chart-gantt"></i>
-                    <div data-i18n="Basic">Tasks Assigned</div>
-                </a>
-            </li> --}}
+
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <i class="menu-icon mdi mdi-message-video"></i>
                     <div data-i18n="Basic">Assessment</div>
                 </a>
             </li>
-           
-        {{-- @endif --}}
+        @endif
 
         {{-- Companies HR links her --}}
-        {{-- @if (session()->get('user')['status'] == 'hr') --}}
+        @if (session()->get('role') == 'hr')
             <li class="menu-item {{ request()->is('make_request') ? 'active' : '' }}">
                 <a href="/make_request" class="menu-link">
                     <i class="menu-icon mdi mdi-telegram"></i>
                     <div data-i18n="Basic">Make Request</div>
                 </a>
             </li>
-            {{-- <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <i class="menu-icon mdi mdi-link-variant"></i>
-                    <div data-i18n="Basic">Students</div>
-                </a>
-            </li> --}}
+
             <li class="menu-item {{ request()->is('responses') ? 'active' : '' }}">
                 <a href="/responses" class="menu-link">
                     <i class="menu-icon mdi mdi-rotate-right"></i>
@@ -177,11 +159,10 @@
                     <div data-i18n="Basic">Departments</div>
                 </a>
             </li>
-           
-        {{-- @endif --}}
+        @endif
 
         {{-- Host supervisor Links --}}
-        {{-- @if (session()->get('user')['status'] == 'host') --}}
+        @if (session()->get('role') == 'host')
             <li class="menu-item {{ request()->is('all_students') ? 'active' : '' }}">
                 <a href="/all_students" class="menu-link">
                     <i class="menu-icon mdi mdi-account-multiple-outline"></i>
@@ -202,6 +183,6 @@
                     <div data-i18n="Basic">Assign Tasks</div>
                 </a>
             </li>
-        {{-- @endif --}}
+        @endif
     </ul>
 </aside>

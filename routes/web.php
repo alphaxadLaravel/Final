@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\LettersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SupervisorController;
 
 // Route Janja zote ziko hapa
 
@@ -25,10 +27,18 @@ Route::get('/dashboard', function () {
     return view('common.dashboard');
 });
 
+// Single supervisor
+Route::get('/single/{id}',[SupervisorController::class,'single']);
+
+// remove student from supervisor
+Route::get('/delete/{id}',[SupervisorController::class,'delete']);
+
+
 // field letter here
-Route::get('/field_letter', function () {
-    return view('common.field_letter');
-});
+Route::get('/field_letter',[LettersController::class,'showLetter']);
+
+// Download field letter here
+Route::get('/download',[LettersController::class,'downloadLetter']);
 
 // All supervisors
 Route::get('/all_supervisors', function () {
@@ -67,7 +77,7 @@ Route::get('/logbook_preview', function () {
 });
 
 // company make requests here
-Route::get('/make_requests', function () {
+Route::get('/make_request', function () {
     return view('hr.make_request');
 });
 
@@ -96,5 +106,10 @@ Route::post('/new_company',[LoginController::class,'newCompany']);
 
 // Login users route here
 Route::post('/walete',[LoginController::class,'walete']);
+
+
+// Upload letter here
+Route::post('/upload',[LettersController::class,'upload']);
+
 
 

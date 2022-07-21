@@ -24,4 +24,21 @@ class Student extends Model
         'status',
     ];
 
+    // Student belongs to a course
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+     // Student belongs to a faculty
+     public function faculty()
+     {
+         return $this->belongsTo(Faculty::class);
+     }
+
+     // Student is also the user of the yssteem
+     public function user()
+     {
+         return $this->belongsTo(User::class);
+     }
 }

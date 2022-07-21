@@ -6,7 +6,9 @@ use App\Models\Brellah;
 use App\Models\HR;
 use App\Models\User;
 use App\Models\Company;
-
+use App\Models\HOD;
+use App\Models\Student;
+use App\Models\Supervisor;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -62,22 +64,50 @@ class LoginController extends Controller
     }
 
     // Login users Here
-    public function walete(){
+    public function walete()
+    {
         request()->validate([
             'password' => 'required',
             'username' => 'required',
         ]);
 
-        $user_check = User::where('username',request('username'))->first();
+        $user_check = User::where(['username'=>request('username'),'password'=>request('password')])->first();
 
-        if($user_check){
-            if($user_check->role == "hr"){
+        if ($user_check) {
 
-                $hr_check = HR::where('')->first();
+            if ($user_check->role == "hr") {
 
+                $hr_check = HR::where('username', request('username'))->first();
+                request()->session()->put('user', $hr_check);
+                request()->session()->put('role', $user_check->role);
+
+                return redirect('/dashboard');
+            } elseif ($user_check->role == "student") {
+
+                $student_check = Student::where('username', request('username'))->first();
+                request()->session()->put('user', $student_check);
+                request()->session()->put('role', $user_check->role);
+
+                return redirect('/dashboard');
+            } elseif ($user_check->role == "hod") {
+
+                $hod_check = HOD::where('username', request('username'))->first();
+                request()->session()->put('user', $hod_check);
+                request()->session()->put('role', $user_check->role);
+
+                return redirect('/dashboard');
+            } elseif ($user_check->role == "supervisor") {
+
+                $super_check = Supervisor::where('username', request('username'))->first();
+                request()->session()->put('user', $super_check);
+                request()->session()->put('role', $user_check->role);
+
+                return redirect('/dashboard');
             }
-        }else{
-            dd("Kausha.");
+        } else {
+            
+            session()->flash('none','');
+            return redirect('/');
         }
     }
 }

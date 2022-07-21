@@ -11,8 +11,7 @@ class Letter extends Model
     protected $table = "letters";
     protected $fillable = [
         'faculty_id',
-        'user_id',
-        'purpose',
+        'hod_id',
         'path',
         'status',
     ];
