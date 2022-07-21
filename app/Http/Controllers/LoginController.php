@@ -7,6 +7,7 @@ use App\Models\HR;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\HOD;
+use App\Models\Host;
 use App\Models\Student;
 use App\Models\Supervisor;
 use Illuminate\Http\Request;
@@ -99,6 +100,13 @@ class LoginController extends Controller
             } elseif ($user_check->role == "supervisor") {
 
                 $super_check = Supervisor::where('username', request('username'))->first();
+                request()->session()->put('user', $super_check);
+                request()->session()->put('role', $user_check->role);
+
+                return redirect('/dashboard');
+            }elseif ($user_check->role == "host") {
+
+                $super_check = Host::where('username', request('username'))->first();
                 request()->session()->put('user', $super_check);
                 request()->session()->put('role', $user_check->role);
 

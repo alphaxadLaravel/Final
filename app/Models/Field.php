@@ -19,4 +19,19 @@ class Field extends Model
         'status',
     ];
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
 }

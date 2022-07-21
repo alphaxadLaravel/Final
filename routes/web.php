@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\FieldController;
 use App\Http\Controllers\HostController;
 use App\Http\Controllers\LettersController;
 use Illuminate\Support\Facades\Route;
@@ -88,14 +89,19 @@ Route::get('/make_request',[CompanyController::class,'sendRequest']);
 // send a request here
 Route::post('/request_students',[CompanyController::class,'requestForm']);
 
+// Accept request here
+Route::get('/accept/{id}',[CompanyController::class,'accept']);
+
+// student Accept Company here
+Route::get('/student/{id}',[CompanyController::class,'studentAccept']);
+
 Route::get('/my_requests', function () {
     return view('hr.my_requests');
 });
 
 // my  own allocation here
-Route::get('/my_allocation', function () {
-    return view('student.my_allocation');
-});
+
+Route::get('/my_allocation',[FieldController::class,'showAllocation']);
 
 // Students responses here
 Route::get('/responses', function () {

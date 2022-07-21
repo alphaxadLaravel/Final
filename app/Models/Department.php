@@ -15,4 +15,14 @@ class Department extends Model
         'department',
         'status',
     ];
+
+    public function field()
+    {
+        return $this->hasMany(Field::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

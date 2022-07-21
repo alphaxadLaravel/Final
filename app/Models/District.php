@@ -15,8 +15,7 @@ class District extends Model
         'region_id',
     ];
 
-    // Student belongd to user
-    // public function field(){
-    //     return $this->hasMany(Field::class);
-    // }
-}
+    public function brellah()
+    {
+        return $this->hasMany(Brellah::class);
+    }}

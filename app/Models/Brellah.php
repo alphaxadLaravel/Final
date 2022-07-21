@@ -21,4 +21,17 @@ class Brellah extends Model
         'ward_id',
         'status'
     ];
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+    public function ward()
+    {
+        return $this->belongsTo(Ward::class);
+    }
 }

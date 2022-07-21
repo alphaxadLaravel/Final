@@ -14,4 +14,22 @@ class Company extends Model
         'brellah_id',
         'hr_id',
     ];
+
+    public function student_request()
+    {
+        return $this->hasMany(StudentRequest::class);
+    }
+
+    public function brellah()
+    {
+        return $this->belongsTo(Brellah::class);
+    }
+    public function hr()
+    {
+        return $this->belongsTo(HR::class);
+    }
+    public function field()
+    {
+        return $this->hasMany(Field::class);
+    }
 }
