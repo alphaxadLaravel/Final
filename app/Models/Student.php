@@ -41,4 +41,10 @@ class Student extends Model
      {
          return $this->belongsTo(User::class);
      }
+
+     // Student has one supervision
+     public function ifm_supervision()
+     {
+         return $this->hasOne(IfmSupervision::class);
+     }
 }

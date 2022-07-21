@@ -3,6 +3,7 @@
 use App\Http\Controllers\LettersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupervisorController;
 
 // Route Janja zote ziko hapa
@@ -39,6 +40,9 @@ Route::get('/field_letter',[LettersController::class,'showLetter']);
 
 // Download field letter here
 Route::get('/download',[LettersController::class,'downloadLetter']);
+
+// GO to student Profile here
+Route::get('/profile/{id}',[ProfileController::class,'gotoProfile']);
 
 // All supervisors
 Route::get('/all_supervisors', function () {

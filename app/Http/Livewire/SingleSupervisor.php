@@ -25,10 +25,11 @@ class SingleSupervisor extends Component
                 'student_id' => $this->selected[$i],
                 'faculty_id' => $faculty
             ]);
+            Student::where(['id'=>$this->selected[$i]])->update([
+                'status' => "supervised",
+            ]);
         }
-        Student::where('id', $this->selected)->update([
-            'status' => "supervised",
-        ]);
+        
 
         $this->selected = [];
 
