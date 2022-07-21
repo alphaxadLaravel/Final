@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('faculties', function (Blueprint $table) {
             $table->id();
             $table->string('faculty');
+            $table->string('inshort');
             $table->string('status')->default("active");
             $table->timestamps();
         });

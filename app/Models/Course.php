@@ -14,6 +14,7 @@ class Course extends Model
         'faculty_id',
         'course',
         'inshort',
+        'lvel',
         'status',
     ];
 }

@@ -12,6 +12,7 @@ class Faculty extends Model
 
     protected $fillable = [
         'faculty',
+        'inshort',
         'status',
     ];
    
