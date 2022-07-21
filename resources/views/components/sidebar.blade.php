@@ -111,7 +111,7 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->is('my_allocation') ? 'active' : '' }}">
+            <li class="menu-item {{ request()->is('company_list') ? 'active' : '' }}">
                 <a href="/company_list" class="menu-link">
                     <i class="menu-icon mdi mdi-city"></i>
                     <div data-i18n="Basic">Companies</div>
