@@ -202,9 +202,6 @@
                     <div data-i18n="Basic">Assign Tasks</div>
                 </a>
             </li>
-
-           
         {{-- @endif --}}
-
     </ul>
 </aside>
