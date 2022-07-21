@@ -18,8 +18,8 @@ class LoginController extends Controller
     {
         request()->validate([
             'regNumber' => 'required|string|min:3|max:10',
-            'phone' => 'required|numeric|digits:10',
-            'email' => 'required|email',
+            'phone' => 'required|numeric|digits:10|unique:h_r_s',
+            'email' => 'required|email||unique:h_r_s',
             'username' => 'required|min:3|max:10|unique:users',
         ]);
 

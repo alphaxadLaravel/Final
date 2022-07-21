@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HostController;
 use App\Http\Controllers\LettersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -64,7 +67,6 @@ Route::get('/company_list', function () {
     return view('common.companies_list');
 });
 
-
 // student logbooks
 Route::get('/student_logbooks', function () {
     return view('supervisor.student_logbooks');
@@ -81,8 +83,13 @@ Route::get('/logbook_preview', function () {
 });
 
 // company make requests here
-Route::get('/make_request', function () {
-    return view('hr.make_request');
+Route::get('/make_request',[CompanyController::class,'sendRequest']);
+
+// send a request here
+Route::post('/request_students',[CompanyController::class,'requestForm']);
+
+Route::get('/my_requests', function () {
+    return view('hr.my_requests');
 });
 
 // my  own allocation here
@@ -100,17 +107,23 @@ Route::get('/host_supervisors', function () {
     return view('hr.host_supervisors');
 });
 
+// Go add host
+Route::get('/add_host',[HostController::class,'goAddHost']);
+
+// register host supervisor
+Route::post('/new_host',[HostController::class,'addhost']);
+
 // Departments
-Route::get('/departments', function () {
-    return view('hr.departments');
-});
+Route::get('/departments',[DepartmentController::class,'goDepartment']);
+
+// Add new department
+Route::post('/add_department',[DepartmentController::class,'newDepartment']);
 
 // register company here
 Route::post('/new_company',[LoginController::class,'newCompany']);
 
 // Login users route here
 Route::post('/walete',[LoginController::class,'walete']);
-
 
 // Upload letter here
 Route::post('/upload',[LettersController::class,'upload']);

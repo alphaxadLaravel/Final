@@ -14,6 +14,7 @@ class AllSupervisors extends Component
     // allow pagination styles with bootstrap here
 
     protected $paginationTheme = 'bootstrap';
+    
     public function render()
     {
         

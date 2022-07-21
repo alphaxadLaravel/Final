@@ -6,15 +6,15 @@
 
     {{-- HOD Upload and Preview Field Letter --}}
     {{-- @if (session()->get('user')['status'] == 'hod') --}}
-    @if (Session::has('uploaded'))
+    @if (Session::has('department'))
         <div class="alert alert-success alert-dismissible" role="alert">
-            Letter have been uploaded Successfully!!!
+            New department Added successfully!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    @if (Session::has('updated'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            Letter have been updated Successfully!!!
+    @if (Session::has('exist'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            Department Arleady exist
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
@@ -24,7 +24,7 @@
             <div class="card mb-2">
                 <div class="card-body ">
                     <h5 class="text-muted"><i class="mdi mdi-plus"></i> Add New Department</h5>
-                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <form action="/add_department" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                             <div class="col-md-12 mb-2">
@@ -39,7 +39,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row justify-content-center mb-3 mt-4 px-3">
-                                    <button class="btn btn-outline-primary" type="submit"><i class="mdi mdi-clear"></i>Submi department</button>
+                                    <button class="btn btn-outline-primary" type="submit"><i
+                                            class="mdi mdi-clear"></i>Submi department</button>
                                 </div>
                             </div>
                         </div>
@@ -49,27 +50,24 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    {{-- @if ($application)
-                       <p> You can Update the Letter by uploading Again!</p>
 
-                       @if ($application)
-                           <a href="/download_application_letter" class="btn btn-outline-primary mt-3"> Application
-                               Letter <i class="mdi mdi-eye"></i></a>
-                       @endif
-                   @else
-                       <div class="d-flex justify-content-center flex-column align-items-center">
-                           <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
-                           <p class="text-muted">No Any Letters to Download!</p>
-                       </div>
-                   @endif --}}
-                    <div class="d-flex justify-content-center flex-column align-items-center">
-                        <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
-                        <p class="text-muted">No Any Department to Show!!</p>
+            @forelse ($departments as $department)
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <span>{{ $department->department }}</span>
                     </div>
                 </div>
-            </div>
+            @empty
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center flex-column align-items-center">
+                            <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
+                            <p class="text-muted">No Departments to Show!</p>
+                        </div>
+                    </div>
+                </div>
+            @endforelse
+
         </div>
     </div>
     {{-- @endif --}}

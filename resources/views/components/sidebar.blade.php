@@ -136,8 +136,15 @@
         @if (session()->get('role') == 'hr')
             <li class="menu-item {{ request()->is('make_request') ? 'active' : '' }}">
                 <a href="/make_request" class="menu-link">
-                    <i class="menu-icon mdi mdi-telegram"></i>
+                    <i class="menu-icon mdi mdi-feather"></i>
                     <div data-i18n="Basic">Make Request</div>
+                </a>
+            </li>
+
+            <li class="menu-item {{ request()->is('my_requests') ? 'active' : '' }}">
+                <a href="/my_requests" class="menu-link">
+                    <i class="menu-icon mdi mdi-telegram"></i>
+                    <div data-i18n="Basic">My Request</div>
                 </a>
             </li>
 
@@ -145,6 +152,12 @@
                 <a href="/responses" class="menu-link">
                     <i class="menu-icon mdi mdi-rotate-right"></i>
                     <div data-i18n="Basic">Responses</div>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->is('add_host') ? 'active' : '' }}">
+                <a href="/add_host" class="menu-link">
+                    <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                    <div data-i18n="Basic">Add Supervisors</div>
                 </a>
             </li>
             <li class="menu-item {{ request()->is('host_supervisors') ? 'active' : '' }}">

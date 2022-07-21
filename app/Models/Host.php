@@ -21,4 +21,24 @@ class Host extends Model
         'phone',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+    public function camp_supervision()
+    {
+        return $this->hasMany(CampSupervision::class);
+    }
+
+
 }

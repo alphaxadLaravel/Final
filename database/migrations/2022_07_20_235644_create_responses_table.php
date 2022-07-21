@@ -21,7 +21,7 @@ return new class extends Migration
             $table->bigInteger('company_id')->unsigned();
             $table->bigInteger('faculty_id')->unsigned();
             $table->string('status')->default('active');
-            $table->foreign('request_id')->references('id')->on('requests')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('request_id')->references('id')->on('student_requests')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');

@@ -17,4 +17,13 @@ class HR extends Model
         'phone',
         'status'
     ];
+
+    public function student_request()
+    {
+        return $this->hasMany(HR::class);
+    }
+    public function users()
+    {
+        return $this->hasOne(User::class);
+    }
 }

@@ -18,4 +18,17 @@ class CampSupervision extends Model
         'department_id',
         'status',
     ];
+
+    public function host()
+    {
+        return $this->belongs(Host::class);
+    }
+    public function company()
+    {
+        return $this->belongs(Company::class);
+    }
+    public function student()
+    {
+        return $this->belongs(Student::class);
+    }
 }

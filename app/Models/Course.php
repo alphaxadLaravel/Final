@@ -17,4 +17,14 @@ class Course extends Model
         'lvel',
         'status',
     ];
+
+    public function student_request()
+    {
+        return $this->hasmany(StudentRequest::class);
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 }
