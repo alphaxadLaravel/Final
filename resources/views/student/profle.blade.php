@@ -30,10 +30,21 @@
 
 
             </div>
-            @if (session()->get('role') == 'hod')
+            @if (session()->get('role') == 'hod' && $student->ifm_supervision)
                 <div class="card my-3 px-3 pt-2 text-center">
                     <small class="text-muted">Supervised By: </small>
-                    <span class=" fw-bold">{{ucwords($student->ifm_supervision->supervisor->fullname)}}</span>
+                    <span class=" fw-bold">
+                       
+                        {{ucwords($student->ifm_supervision->supervisor->fullname)}}
+                    </span>
+
+                </div>
+            @endif
+            @if (session()->get('role') == 'hod' && !$student->ifm_supervision)
+                <div class="card my-3 p-4 text-center">
+                    <span class=" fw-bold">
+                        <a href="/all_supervisors" class="btn btn-sm btn-outline-primary">Assign Supervisor</a>
+                    </span>
 
                 </div>
             @endif
@@ -63,6 +74,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade " id="navs-top-home" role="tabpanel">
+                        
                         <div class="">
                             <small class="text-muted">Company Name: </small>
                             <p class="">Tanzania Railway Authority</p>

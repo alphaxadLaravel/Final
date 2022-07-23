@@ -33,8 +33,13 @@
 
                             <small class="text-muted">Department: </small>
                             <p class="">
-                                  Pending....
-                                </p>
+                                Pending....
+                            </p>
+
+                            <small class="text-muted">Host Supervisor: </small>
+                            <p class="">
+                                Pending....
+                            </p>
 
                             <small class="text-muted">Company Phone Number: </small>
                             <p class="">{{ $allocation->company->brellah->phone }}</p>
@@ -43,19 +48,18 @@
                             <p class="">
                                 {{ $allocation->company->brellah->region->region . ' - ' . $allocation->company->brellah->district->district }}
                             </p>
-
-                            <div class="d-flex justify-content-end">
-                                <button class="btn btn-outline-danger btn-sm" disabled><i class="mdi mdi-delete "></i>
-                                    Cancel Allocation</button>
+                            
+                        @else
+                            <div class="d-flex justify-content-center flex-column align-items-center text-center">
+                                {{-- <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt=""> --}}
+                                <p class="text-muted mt-5">No Allocation Details To Show!</p>
                             </div>
                         @endif
 
+
                     </div>
                 </div>
-                {{-- <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('images/no.gif') }}" height="165px" width="150px" alt="">
-                <p class="text-muted">No Allocation Details To Show!</p>
-            </div> --}}
+
             </div>
         </div>
     </div>

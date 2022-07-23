@@ -28,7 +28,7 @@
                                     Student(s)</span>
                             </td>
                             <td>
-                                <a href="/super_profile/{{ $host->id }}"><span
+                                <a href="/single/{{ $host->id }}"><span
                                         class="badge bg-label-primary me-1"><i class="mdi mdi-eye"></i></span></a>
                             </td>
                         </tr>

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-6">
 
-                    <form action="/request_students" enctype="multipart/form-data" method="POST">
+                    <form action="/sending" method="POST">
                         @csrf
                         <span class=""> <i class="mdi mdi-telegram"></i> Request for students to conduct field in your
                             Compnay!</span>

@@ -8,6 +8,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    @if (Session::has('denied'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        You have denied the request, it wont show up to Students!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
     @livewire('companies')
 

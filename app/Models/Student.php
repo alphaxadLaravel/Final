@@ -30,21 +30,25 @@ class Student extends Model
         return $this->belongsTo(Course::class);
     }
 
-     // Student belongs to a faculty
-     public function faculty()
-     {
-         return $this->belongsTo(Faculty::class);
-     }
+    // Student belongs to a faculty
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 
-     // Student is also the user of the yssteem
-     public function user()
-     {
-         return $this->belongsTo(User::class);
-     }
+    // Student is also the user of the yssteem
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-     // Student has one supervision
-     public function ifm_supervision()
-     {
-         return $this->hasOne(IfmSupervision::class);
-     }
+    // Student has one supervision
+    public function ifm_supervision()
+    {
+        return $this->hasOne(IfmSupervision::class);
+    }
+    public function response()
+    {
+        return $this->hasOne(StudentRequest::class);
+    }
 }

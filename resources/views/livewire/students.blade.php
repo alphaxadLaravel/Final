@@ -58,13 +58,13 @@
 
         </div>
     </div>
-    {{-- @if (session()->get('user')== 'hod')
+    @if (session()->get('user')== 'hod')
         <div class=" d-flex justify-content-center mt-4">
             {{ $students->links() }}
         </div>
     @endif
 
-    @if (session()->get('user')== 'supervisor')
+    {{-- @if (session()->get('user')== 'supervisor')
         <div class=" d-flex justify-content-center mt-4">
             {{ $superviside->links() }}
         </div>

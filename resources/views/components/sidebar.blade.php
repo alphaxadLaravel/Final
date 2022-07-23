@@ -44,10 +44,10 @@
                 </a>
             </li>
 
-            <li class="menu-item {{ request()->is('allocations') ? 'active' : '' }}">
-                <a href="/allocations" class="menu-link">
-                    <i class="menu-icon mdi mdi-map-marker-radius"></i>
-                    <div data-i18n="Basic">Allocations</div>
+            <li class="menu-item {{ request()->is('responses') ? 'active' : '' }}">
+                <a href="/responses" class="menu-link">
+                    <i class="menu-icon mdi mdi-rotate-right"></i>
+                    <div data-i18n="Basic">Responses</div>
                 </a>
             </li>
             <li class="menu-item {{ request()->is('company_list') ? 'active' : '' }}">

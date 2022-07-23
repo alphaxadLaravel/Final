@@ -42,4 +42,10 @@ class StudentRequest extends Model
         return $this->belongsTo(HR::class);
     }
 
+    public function response()
+    {
+        return $this->hasMany(Response::class);
+    }
+
+
 }

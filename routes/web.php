@@ -87,10 +87,11 @@ Route::get('/logbook_preview', function () {
 Route::get('/make_request',[CompanyController::class,'sendRequest']);
 
 // send a request here
-Route::post('/request_students',[CompanyController::class,'requestForm']);
+Route::post('/sending',[CompanyController::class,'requestForm']);
 
 // Accept request here
 Route::get('/accept/{id}',[CompanyController::class,'accept']);
+Route::get('/denied/{id}',[CompanyController::class,'denied']);
 
 // student Accept Company here
 Route::get('/student/{id}',[CompanyController::class,'studentAccept']);
@@ -98,8 +99,6 @@ Route::get('/student/{id}',[CompanyController::class,'studentAccept']);
 Route::get('/my_requests', function () {
     return view('hr.my_requests');
 });
-
-// my  own allocation here
 
 Route::get('/my_allocation',[FieldController::class,'showAllocation']);
 

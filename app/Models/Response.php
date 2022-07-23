@@ -12,12 +12,31 @@ class Response extends Model
     protected $table = "responses";
 
     protected $fillable = [
-        'request_id',
+        'student_request_id',
         'student_id',
-        'company_id',
         'company_id',
         'faculty_id',
         'status',
     ];
+
+    public function student_request()
+    {
+        return $this->belongsTo(StudentRequest::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
 
 }

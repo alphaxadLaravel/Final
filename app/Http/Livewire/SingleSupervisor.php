@@ -29,12 +29,11 @@ class SingleSupervisor extends Component
                 'status' => "supervised",
             ]);
         }
-        
 
         $this->selected = [];
 
         session()->flash('assigned', '');
-        return redirect('/super_profile/' . $supervisor);
+        return redirect('/single/'.$supervisor);
     }
 
     // mount the data of super visor in his profile here
