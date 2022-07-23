@@ -21,14 +21,14 @@ class CampSupervision extends Model
 
     public function host()
     {
-        return $this->belongs(Host::class);
+        return $this->belongsTo(Host::class);
     }
     public function company()
     {
-        return $this->belongs(Company::class);
+        return $this->belongsTo(Company::class);
     }
     public function student()
     {
-        return $this->belongs(Student::class);
+        return $this->belongsTo(Student::class);
     }
 }

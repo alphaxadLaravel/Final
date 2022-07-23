@@ -163,15 +163,9 @@
                         <h6 class="card-title">
                             {{ $details->fullname }}
                         </h6>
-                        <p class="card-text fw-bold">{{ $details->username }}</p>
                     </div>
                 </div>
-                <div class="card my-3 px-3 pt-2 text-center">
-
-                    <p class="text-muted">Student Assigned: <span
-                            class="text-dark fw-bold">{{ count($details->ifm_supervision) }}</span></p>
-                    {{-- <a href="#" class="btn btn-sm btn-outline-primary m-3">Assign Supervisor</a> --}}
-                </div>
+               
             </div>
             <div class="col-md-9 mt-2">
                 <div class="nav-align-top mb-4">
@@ -212,6 +206,7 @@
                                                 <th>Select</th>
                                                 <th>RegNumber</th>
                                                 <th>Student Name</th>
+                                                <th>Course</th>
                                                 <th>Level</th>
                                             </tr>
                                         </thead>
@@ -227,10 +222,11 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>{{ $noSuper->username }}</td>
-                                                    <td>{{ ucwords($noSuper->fullname) }}
+                                                    <td>{{ $noSuper->student->username }}</td>
+                                                    <td>{{ ucwords($noSuper->student->fullname) }}
+                                                        <td>{{ ucwords($noSuper->student->course->inshort) }}
                                                     </td>
-                                                    <td>{{ ucfirst($noSuper->level) }}</td>
+                                                    <td>{{ ucfirst($noSuper->student->level) }}</td>
                                                 </tr>
                                             @endforeach
 
