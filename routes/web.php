@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\HostController;
 use App\Http\Controllers\LettersController;
+use App\Http\Controllers\LogBookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,9 @@ Route::get('/dashboard', function () {
 
 // Single supervisor
 Route::get('/single/{id}',[SupervisorController::class,'single']);
+
+// Route to fill the logbook
+Route::post('/fillLogbook', [LogBookController::class,'fillLogbook']);
 
 // remove student from supervisor
 Route::get('/delete/{id}',[SupervisorController::class,'delete']);
@@ -78,10 +82,10 @@ Route::get('/fill_logbook', function () {
     return view('student.fill_logbook');
 });
 
-// previview logbook here
-Route::get('/logbook_preview', function () {
-    return view('common.logbook_preview');
-});
+
+
+// Preview Logbook here
+Route::get('/logbook_preview',[LogbookController::class,'previewLogbook']);
 
 // company make requests here
 Route::get('/make_request',[CompanyController::class,'sendRequest']);

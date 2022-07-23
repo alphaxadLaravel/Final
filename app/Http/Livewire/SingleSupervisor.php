@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\CampSupervision;
 use App\Models\Company;
+use App\Models\Field;
 use App\Models\Host;
 use App\Models\IfmSupervision;
 use App\Models\Response;
@@ -55,6 +56,11 @@ class SingleSupervisor extends Component
                 ]);
                 Response::where(['id'=>$this->selected[$i]])->update([
                     'status' => "supervised",
+                ]);
+                
+                Field::where(['id'=>$this->selected[$i]])->update([
+                    'department_id' => $department->department_id,
+                    'host_id' => $supervisor,
                 ]);
             }
         }

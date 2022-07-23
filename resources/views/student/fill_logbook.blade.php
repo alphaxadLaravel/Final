@@ -20,14 +20,14 @@
                             <div class="col-6">
                                 <label for="" class="text-muted mb-1">Choose the Day<span
                                         class="text-danger">*</span></label>
-                                <select id="smallSelect" wire:model="district" class="form-select ">
+                                <select id="smallSelect" name="day" class="form-select ">
                                     <option value="">Select Number of the Day..</option>
                                     @for ($i = 1; $i <= 60; $i++)
                                         <option value="Day {{ $i }}">Day {{ $i }}</option>
                                     @endfor
                                 </select>
                                 <small class="text-danger">
-                                    @error('task')
+                                    @error('day')
                                         {{ $message }}
                                     @enderror
                                 </small>
@@ -35,14 +35,14 @@
                             <div class="col-6">
                                 <label for="" class="text-muted mb-1">Choose the Week<span
                                         class="text-danger">*</span></label>
-                                <select id="smallSelect" wire:model="district" class="form-select ">
+                                <select id="smallSelect" name="week" class="form-select ">
                                     <option value="">Select Number of the Week..</option>
                                     @for ($i = 1; $i <= 8; $i++)
                                         <option value="Week {{ $i }}">Week {{ $i }}</option>
                                     @endfor
                                 </select>
                                 <small class="text-danger">
-                                    @error('task')
+                                    @error('week')
                                         {{ $message }}
                                     @enderror
                                 </small>

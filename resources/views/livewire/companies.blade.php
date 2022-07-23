@@ -58,7 +58,6 @@
                             <th>District</th>
                             <th>Requested</th>
                             <th>Intake date</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -74,7 +73,6 @@
                                         Student(s)</span>
                                 </td>
                                 <td>{{ $request->startDate }}</td>
-                                <td><span class="text-success">{{ $request->status }}</span></td>
 
                                 <td>
                                     @if ($company != null)
