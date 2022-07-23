@@ -43,4 +43,8 @@ class Supervisor extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function field()
+    {
+        return $this->hasMany(Field::class);
+    }
 }

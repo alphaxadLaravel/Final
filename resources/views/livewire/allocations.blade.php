@@ -14,37 +14,33 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    {{-- @foreach ($data as $std)
+                    @foreach ($alloctions as $allocate)
                         <tr>
                             <td><i class="mdi mdi-account-box-outline text-danger me-3"></i>
-                                <strong>{{ $std->student->IDNumber }}</strong>
+                                <strong>{{ $allocate->student->username }}</strong>
                             </td>
-                            <td>{{ $std->student->firstname . ' ' . $std->student->middlename . ' ' . $std->student->lastname }}
+                            <td>{{ $allocate->student->fullname }}
                             </td>
-                            <td>{{ $std->company }}</td>
-                            <td>{{ $std->region->region }}</td>
-                            <td>{{ $std->district->district }}</td>
-                            <td>{{ $std->ward->ward }}</td>
+                            <td>{{ $allocate->company->brellah->company }}</td>
+                            <td>{{ $allocate->company->brellah->region->region }}</td>
+                            <td>{{ $allocate->company->brellah->district->district }}</td>
+                            <td>{{ $allocate->company->brellah->ward->ward }}</td>
                             <td>
-                                <a href="/profile/{{ $std->student_id }}"><span class="badge bg-label-primary me-1"><i
+                                <a href="/profile/{{ $allocate->student_id }}"><span class="badge bg-label-primary me-1"><i
                                             class="mdi mdi-eye"></i></span></a>
                             </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
     
                 </tbody>
             </table>
-            {{-- @if ($data->isEmpty())
+            @if ($alloctions->isEmpty())
                 <div class="d-flex justify-content-center flex-column align-items-center">
                     <img src="{{ asset('images/no.gif') }}" height="200px" width="200px" alt="">
                     <p class="text-muted">No Data To Display!!</p>
                 </div>
-            @endif --}}
+            @endif
     
-            <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('images/no.gif') }}" height="200px" width="200px" alt="">
-                <p class="text-muted">No Data To Display!!</p>
-            </div>
         </div>
     </div>
     

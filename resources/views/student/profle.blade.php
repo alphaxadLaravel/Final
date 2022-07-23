@@ -48,9 +48,9 @@
 
                 </div>
             @endif
-            @if (session()->get('role') == 'supervisor')
+            @if (session()->get('role') == 'supervisor' || session()->get('role') == 'host')
                 <div class="card my-3 px-3 pt-2 text-center">
-                    <a href="#" class="btn btn-sm btn-outline-primary m-3"> <i
+                    <a href="/logbook/{{$student->id}}" class="btn btn-sm btn-outline-primary m-3"> <i
                             class="menu-icon mdi mdi-book-open-page-variant mdi-small"></i> View Logbook</a>
                 </div>
             @endif

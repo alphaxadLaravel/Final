@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Course;
 use App\Models\Field;
+use App\Models\IfmSupervision;
 use App\Models\Response;
 use App\Models\Student;
 use App\Models\StudentRequest;
@@ -52,7 +53,6 @@ class CompanyController extends Controller
                 return redirect('/my_requests');
             }
         }
-
     }
     public function sendRequest()
     {
@@ -87,6 +87,8 @@ class CompanyController extends Controller
     {
         $student_id = session()->get('user')['id'];
 
+        $supervisor = IfmSupervision::where('student_id', $student_id)->first();
+
         $request_details = StudentRequest::where('id', $id)->first();
 
         $has_field = Field::where('student_id', $student_id)->first();
@@ -95,23 +97,30 @@ class CompanyController extends Controller
             session()->flash('hasfield', '');
             return redirect('/my_allocation');
         } else {
-            Field::Create([
-                'student_id' => $student_id,
-                'company_id' => $request_details->company_id,
-                'gotway' => "Company Accept!",
-            ]);
-            // request_id 	student_id 	company_id 	faculty_id 	status 	
-            Response::Create([
-                'student_request_id' =>$id,
-                'student_id' =>$student_id,
-                'company_id' =>$request_details->company_id,
-                'faculty_id' =>$request_details->faculty_id,
-                'status' => "Responded"
-            ]);
+            if ($supervisor) {
+                Field::Create([
+                    'student_id' => $student_id,
+                    'supervisor_id' => $supervisor->supervisor_id,
+                    'company_id' => $request_details->company_id,
+                    'gotway' => "Company Accept!",
+                ]);
+                // request_id 	student_id 	company_id 	faculty_id 	status 	
+                Response::Create([
+                    'student_request_id' => $id,
+                    'student_id' => $student_id,
+                    'company_id' => $request_details->company_id,
+                    'faculty_id' => $request_details->faculty_id,
+                    'status' => "Responded"
+                ]);
 
+                session()->flash('allocated', '');
+                return redirect('/my_allocation');
+            } else {
 
-            session()->flash('allocated', '');
-            return redirect('/my_allocation');
+                session()->flash('supervision', '');
+                return redirect('/company_list');
+
+            }
         }
     }
 }

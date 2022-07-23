@@ -17,6 +17,7 @@ class Field extends Model
         'host_id',
         'gotway',
         'status',
+        'supervisor_id'
     ];
 
     public function student()
@@ -34,4 +35,8 @@ class Field extends Model
         return $this->belongsTo(Department::class);
     }
 
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
 }

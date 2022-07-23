@@ -35,13 +35,13 @@
                         @endforeach
                     @endif
 
-                    {{-- @if (session()->get('user')== 'supervisor')
+                    @if (session()->get('role')== 'supervisor')
                         @foreach ($superviside as $student)
                             <tr>
                                 <td><i class="mdi mdi-account-box-outline fa-lg text-danger me-3"></i>
-                                    <strong>{{ $student->student->IDNumber }}</strong>
+                                    <strong>{{ $student->student->username }}</strong>
                                 </td>
-                                <td>{{ $student->student->firstname . ' ' . $student->student->middlename . ' ' . $student->student->lastname }}
+                                <td>{{ $student->student->fullname }}
                                 </td>
                                 <td>{{ $student->student->course->course }}</td>
                                 <td>{{ $student->student->phone }}</td>
@@ -52,7 +52,25 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif --}}
+                    @endif
+                    @if (session()->get('role')== 'host')
+                        @foreach ($superviside as $student)
+                            <tr>
+                                <td><i class="mdi mdi-account-box-outline fa-lg text-danger me-3"></i>
+                                    <strong>{{ $student->student->username }}</strong>
+                                </td>
+                                <td>{{ $student->student->fullname }}
+                                </td>
+                                <td>{{ $student->student->course->course }}</td>
+                                <td>{{ $student->student->phone }}</td>
+                                <td class="text-primary">{{ $student->student->year }}</td>
+                                <td>
+                                    <a href="/profile/1"><span
+                                            class="badge bg-label-primary me-1"><i class="mdi mdi-eye"></i></span></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
 
@@ -64,9 +82,9 @@
         </div>
     @endif
 
-    {{-- @if (session()->get('user')== 'supervisor')
+    @if (session()->get('user')== 'supervisor')
         <div class=" d-flex justify-content-center mt-4">
             {{ $superviside->links() }}
         </div>
-    @endif --}}
+    @endif
 </div>

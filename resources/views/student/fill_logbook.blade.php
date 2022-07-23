@@ -2,6 +2,13 @@
 @section('title', 'Fill Logbook - IFM Field Management System')
 @section('system')
     <h5 class=" py-3 mb-2"><span class="text-muted fw-light">Student /</span> Fill Logbook</h5>
+    @if (Session::has('wait'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        Please wait untill you are Allocated Supervisor...
+        <button type="button" class="btn-close" data-bs-dismiss="alert"
+            aria-label="Close"></button>
+    </div>
+@endif
     <div class="card mb-2">
         <div class="card-body ">
             <div class="row">

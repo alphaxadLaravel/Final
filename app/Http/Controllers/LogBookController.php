@@ -6,6 +6,7 @@ use App\Models\CampSupervision;
 use App\Models\IfmSupervision;
 use App\Models\Logbook;
 use App\Models\Response;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class LogBookController extends Controller
@@ -45,8 +46,10 @@ class LogBookController extends Controller
 
             return redirect('/logbook_preview');
         } else {
-            dd("wait");
             session()->flash('wait');
+            return redirect('/fill_logbook');
+
+            
         }
     }
 
@@ -57,5 +60,14 @@ class LogBookController extends Controller
         $logbook = LogBook::where('student_id',$user_id)->get();
 
         return view('common.logbook_preview',['logbook'=>$logbook]);
+        
+    }
+
+    public function studentlogbook($id){
+
+        $logbook = LogBook::where('student_id',$id)->get();
+        $student = Student::where('id',$id)->first();
+
+        return view('common.logbook_preview',['logbook'=>$logbook, 'student'=>$student]);
     }
 }

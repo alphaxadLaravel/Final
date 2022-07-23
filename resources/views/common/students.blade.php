@@ -11,7 +11,11 @@
         <h5 class=" py-3 mb-2"><span class="text-muted fw-light">Supervisor /</span> My Students</h5>
     @endif
 
-   
+    @if (session()->get('role') == 'host')
+        <h5 class=" py-3 mb-2"><span class="text-muted fw-light">Host /</span> My Students</h5>
+    @endif
+
+
     @livewire('students')
 
 @endsection

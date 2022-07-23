@@ -6,8 +6,13 @@
         <h5 class=" py-3 mb-2"><span class="text-muted fw-light">Student /</span> My Logbook </h5>
     @endif
     @if (session()->get('role') == 'supervisor')
-        <h5 class=" py-3 mb-2"><span class="text-muted fw-light"> <a href="/student_logbooks"><i
-                        class="mdi mdi-keyboard-backspace"></i></a> Supervisor /</span> Logbook Preview </h5>
+        <h5 class=" py-3 mb-2"><span class="text-muted fw-light"> <i class="mdi mdi-keyboard-backspace"></i> Supervisor
+                /</span> Logbook Preview </h5>
+    @endif
+
+    @if (session()->get('role') == 'host')
+        <h5 class=" py-3 mb-2"><span class="text-muted fw-light"> <i class="mdi mdi-keyboard-backspace"></i> Host /</span>
+            Logbook Preview </h5>
     @endif
 
     <!-- Section: Timeline -->
@@ -15,9 +20,9 @@
         <div class="card mb-3">
             <div class="card-body ">
                 <div class="d-flex justify-content-between align-items-center">
-                    @if (session()->get('role') == 'supervisor')
+                    @if (session()->get('role') == 'supervisor' || session()->get('role') == 'host')
                         <div class="">
-                            <span class="fw-bold ">IMC/BIT/191234 - Alphaxad Jozee Kakulu</span>
+                            <span class="fw-bold ">{{ $student->username }} - {{ $student->fullname }}</span>
                         </div>
                         <div class="">
                             <a href="#" class="btn btn-outline-primary btn-sm">Export Logbook <i
@@ -46,7 +51,8 @@
         <ul class="timeline">
             @foreach ($logbook as $page)
                 <li class="timeline-item mb-5">
-                    <h5 class="fw-bold">{{ $page->created_at->format('d.M.Y') }} - {{$page->day}}  {{$page->week}}</h5>
+                    <h5 class="fw-bold">{{ $page->created_at->format('d.M.Y') }} - {{ $page->day }} {{ $page->week }}
+                    </h5>
                     <div class="col-md mb-4 mb-md-0">
                         <div class="accordion mt-3" id="accordionExample">
 
@@ -106,7 +112,21 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col mb-3">
+                                <div class="col-md-12 mb-3">
+                                    <label for="nameBackdrop" class="form-label">Select week </label>
+                                    <select id="smallSelect" name="week" class="form-select ">
+                                        <option value="">Select Number of the Week..</option>
+                                        @for ($i = 1; $i <= 8; $i++)
+                                            <option value="Week {{ $i }}">Week {{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                    <small class="text-danger">
+                                        @error('week')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                </div>
+                                <div class="col-md-12 mb-3">
                                     <label for="nameBackdrop" class="form-label">Enter Signature</label>
                                     <input type="text" id="nameBackdrop" class="form-control"
                                         placeholder="Enter Signature e.g A.Joseph" />

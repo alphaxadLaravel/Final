@@ -16,9 +16,9 @@ class Allocations extends Component
     protected $paginationTheme = 'bootstrap';
     public function render()
     {
-        $hod_faculty = session()->get('user')['faculty_id'];
-        $allocations  = Field::where('faculty_id', '=', $hod_faculty)->orderBy('id', 'DESC')->paginate(5);
-
+        $supervisor = session()->get('user')['faculty_id'];
+        $supervisor_id = session()->get('user')['id'];
+        $allocations  = Field::where('supervisor_id', $supervisor_id)->orderBy('id', 'DESC')->get();
         return view('livewire.allocations',['alloctions'=>$allocations]);
     }
 }

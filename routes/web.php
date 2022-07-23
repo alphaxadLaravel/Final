@@ -87,6 +87,8 @@ Route::get('/fill_logbook', function () {
 // Preview Logbook here
 Route::get('/logbook_preview',[LogbookController::class,'previewLogbook']);
 
+Route::get('/logbook/{id}',[LogbookController::class,'studentlogbook']);
+
 // company make requests here
 Route::get('/make_request',[CompanyController::class,'sendRequest']);
 

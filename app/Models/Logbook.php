@@ -20,5 +20,16 @@ class Logbook extends Model
         'lesson',
         'status',
     ];
-
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+    public function host()
+    {
+        return $this->belongsTo(Host::class);
+    }
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class);
+    }
 }
